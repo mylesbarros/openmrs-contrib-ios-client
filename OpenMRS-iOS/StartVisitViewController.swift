@@ -28,8 +28,8 @@ class StartVisitViewController : UITableViewController, SelectVisitTypeViewDeleg
         super.init(coder: aDecoder)
     }
 
-    override init(style: UITableViewStyle) {
-        super.init(style: UITableViewStyle.grouped)
+    override init(style: UITableView.Style) {
+        super.init(style: UITableView.Style.grouped)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -48,7 +48,7 @@ class StartVisitViewController : UITableViewController, SelectVisitTypeViewDeleg
         self.restorationClass = type(of: self)
 
         let defaultCenter = NotificationCenter.default
-        defaultCenter.addObserver(self, selector:#selector(StartVisitViewController.updateFontSize), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
+        defaultCenter.addObserver(self, selector:#selector(StartVisitViewController.updateFontSize), name: UIContentSizeCategory.didChangeNotification, object: nil)
         MRSHelperFunctions.updateTableView(forDynamicTypeSize: self.tableView)
 
         self.title = NSLocalizedString("Start Visit", comment: "Label -start- -visit-")
@@ -145,7 +145,7 @@ class StartVisitViewController : UITableViewController, SelectVisitTypeViewDeleg
 
             if cell == nil
             {
-                cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "visit_type")
+                cell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "visit_type")
             }
 
             cell.textLabel?.text = NSLocalizedString("Visit Type", comment: "Label -visit- -type-")
@@ -167,7 +167,7 @@ class StartVisitViewController : UITableViewController, SelectVisitTypeViewDeleg
 
             if cell == nil
             {
-                cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "location")
+                cell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "location")
             }
 
             cell.textLabel?.text = NSLocalizedString("Location", comment:"Label location")
@@ -193,12 +193,12 @@ class StartVisitViewController : UITableViewController, SelectVisitTypeViewDeleg
         switch indexPath.section
         {
         case 0:
-            let vc = SelectVisitTypeView(style: UITableViewStyle.plain)
+            let vc = SelectVisitTypeView(style: UITableView.Style.plain)
             vc.delegate = self
             vc.visitTypes = cachedVisitTypes
             self.navigationController?.pushViewController(vc, animated: true)
         case 1:
-            let vc = LocationListTableViewController(style: UITableViewStyle.plain)
+            let vc = LocationListTableViewController(style: UITableView.Style.plain)
             vc.delegate = self
             self.navigationController?.pushViewController(vc, animated: true)
         default:
@@ -232,8 +232,8 @@ class StartVisitViewController : UITableViewController, SelectVisitTypeViewDeleg
         coder.encode(self.location, forKey: "location")
     }
 
-    static func viewController(withRestorationIdentifierPath identifierComponents: [Any], coder: NSCoder) -> UIViewController? {
-        let startVisit: StartVisitViewController = StartVisitViewController(style: UITableViewStyle.grouped)
+    static func viewController(withRestorationIdentifierPath identifierComponents: [String], coder: NSCoder) -> UIViewController? {
+        let startVisit: StartVisitViewController = StartVisitViewController(style: UITableView.Style.grouped)
         startVisit.patient = coder.decodeObject(forKey: "patient") as! MRSPatient
         startVisit.delegate = coder.decodeObject(forKey: "delegate") as! StartVisitViewControllerDelegate
         let nils:[Bool] = coder.decodeObject(forKey: "nils") as! Array

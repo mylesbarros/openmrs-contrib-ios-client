@@ -26,7 +26,7 @@ class SelectVisitTypeView : UITableViewController, UIViewControllerRestoration
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
-    override init(style: UITableViewStyle) {
+    override init(style: UITableView.Style) {
         super.init(style: .plain)
     }
 
@@ -46,7 +46,7 @@ class SelectVisitTypeView : UITableViewController, UIViewControllerRestoration
         self.restorationClass = type(of: self)
 
         let defaultCenter: NotificationCenter = .default
-        defaultCenter.addObserver(self, selector:#selector(SelectVisitTypeView.updateFontSize), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
+        defaultCenter.addObserver(self, selector:#selector(SelectVisitTypeView.updateFontSize), name: UIContentSizeCategory.didChangeNotification, object: nil)
         MRSHelperFunctions.updateTableView(forDynamicTypeSize: self.tableView)
 
         self.title = NSLocalizedString("Visit Type", comment: "Label -visit- -type-")
@@ -111,8 +111,8 @@ class SelectVisitTypeView : UITableViewController, UIViewControllerRestoration
         coder.encode(self.visitTypes, forKey: "visitTypes")
     }
 
-    static func viewController(withRestorationIdentifierPath identifierComponents: [Any], coder: NSCoder) -> UIViewController? {
-        let visitTypeList = SelectVisitTypeView(style: UITableViewStyle.plain)
+    static func viewController(withRestorationIdentifierPath identifierComponents: [String], coder: NSCoder) -> UIViewController? {
+        let visitTypeList = SelectVisitTypeView(style: UITableView.Style.plain)
         visitTypeList.visitTypes = coder.decodeObject(forKey: "visitTypes") as! [MRSVisitType]
         visitTypeList.delegate = coder.decodeObject(forKey: "delegate") as! StartVisitViewController
         return visitTypeList
