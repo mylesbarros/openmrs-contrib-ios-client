@@ -134,23 +134,14 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     UIApplication.shared.setStatusBarStyle(.lightContent, animated: true)
                 }
             }
-            else {
-                print("Error: \(error)")
+            else
+            {
+                let alert = UIAlertController(title: NSLocalizedString("Error", comment: "Warning label error"), message: NSLocalizedString("Invalid credentials", comment: "warning label invalid credentials"), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+
+                self.show(alert, sender: nil)
             }
-//            else
-//            {
-//                if error.code == -1011 // Incorrect credentials
-//                {
-//                    let alert = UIAlertController(title: NSLocalizedString("Error", comment: "Warning label error"), message: NSLocalizedString("Invalid credentials", comment: "warning label invalid credentials"), preferredStyle: .Alert)
-//                    alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-//
-//                    self.showViewController(alert, sender: nil)
-//                }
-//                else
-//                {
-//                    MRSAlertHandler.alertViewForError(self, error: error).show()
-//                }
-//            }
+            
         }
     }
 
