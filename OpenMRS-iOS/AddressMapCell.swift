@@ -20,6 +20,7 @@ class AddressMapCell : UITableViewCell
         super.init(coder: aDecoder)
     }
 
+    @objc
     init(location: CLLocationCoordinate2D, reuseIdentifier: String)
     {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)

@@ -11,7 +11,7 @@ import MapKit
 
 class MapViewController : UIViewController
 {
-    var patient: MRSPatient! {
+    @objc var patient: MRSPatient! {
         didSet {
             self.title = patient.name
 

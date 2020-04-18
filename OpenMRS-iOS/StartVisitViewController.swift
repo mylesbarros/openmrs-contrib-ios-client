@@ -17,8 +17,8 @@ class StartVisitViewController : UITableViewController, SelectVisitTypeViewDeleg
     var visitType: MRSVisitType!
     var cachedVisitTypes: [MRSVisitType]!
     var location: MRSLocation!
-    var patient: MRSPatient!
-    var delegate: StartVisitViewControllerDelegate!
+    @objc var patient: MRSPatient!
+    @objc var delegate: StartVisitViewControllerDelegate!
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -37,6 +37,7 @@ class StartVisitViewController : UITableViewController, SelectVisitTypeViewDeleg
         MRSHelperFunctions.updateTableView(forDynamicTypeSize: self.tableView)
     }
 
+    @objc
     func updateFontSize() {
         MRSHelperFunctions.updateTableView(forDynamicTypeSize: self.tableView)
     }
@@ -60,6 +61,7 @@ class StartVisitViewController : UITableViewController, SelectVisitTypeViewDeleg
         self.updateDoneButtonState()
     }
 
+    @objc
     func done()
     {
         MBProgressExtension.showSucess(withTitle: NSLocalizedString("Loading", comment: "Label loading"), in: self.view)
@@ -101,6 +103,7 @@ class StartVisitViewController : UITableViewController, SelectVisitTypeViewDeleg
         }
     }
 
+    @objc
     func cancel()
     {
         self.dismiss(animated: true, completion: nil)

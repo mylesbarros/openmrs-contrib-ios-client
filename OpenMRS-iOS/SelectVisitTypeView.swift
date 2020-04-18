@@ -35,6 +35,7 @@ class SelectVisitTypeView : UITableViewController, UIViewControllerRestoration
         MRSHelperFunctions.updateTableView(forDynamicTypeSize: self.tableView)
     }
 
+    @objc
     func updateFontSize() {
         MRSHelperFunctions.updateTableView(forDynamicTypeSize: self.tableView)
     }

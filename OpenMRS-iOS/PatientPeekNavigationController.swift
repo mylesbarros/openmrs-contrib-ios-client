@@ -9,8 +9,8 @@
 import UIKit
 
 class PatientPeekNavigationController : UINavigationController {
-    var patient: MRSPatient!
-    var searchController: PatientSearchViewController!
+    @objc var patient: MRSPatient!
+    @objc var searchController: PatientSearchViewController!
 
     @available(iOS 9.0, *)
     override var previewActionItems: [UIPreviewActionItem] {

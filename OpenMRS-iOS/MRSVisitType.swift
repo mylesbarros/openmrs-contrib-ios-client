@@ -9,9 +9,8 @@ import Foundation
 
 class MRSVisitType : NSObject, NSCoding
 {
-
-    var uuid: String!
-    var display: String!
+    @objc var uuid: String!
+    @objc var display: String!
 
     override init() {
         super.init()

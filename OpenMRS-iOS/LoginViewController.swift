@@ -193,16 +193,19 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
     }
 
+    @objc
     func updateUsername(sender: UITextField!)
     {
         username = sender.text
     }
 
+    @objc
     func updatePassword(sender: UITextField!)
     {
         password = sender.text
     }
 
+    @objc
     func updateHost(sender: UITextField!)
     {
         host = sender.text
