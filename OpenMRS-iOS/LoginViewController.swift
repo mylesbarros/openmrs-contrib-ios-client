@@ -33,7 +33,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var password: String!
 
     @IBAction func useDemoServerTapped(_ sender: Any) {
-        self.hostField.text = "http://demo.openmrs.org/openmrs"
+        self.hostField.text = "https://demo.openmrs.org/openmrs"
         self.updateHost(sender: self.hostField)
 
         self.usernameField.text = "admin"
@@ -174,7 +174,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func addProtocolToHost(hostString: String) -> String {
         if !hostString.hasPrefix("htt") // Account for both http and https. Not perfect, but it works
         {
-            return "http://".appendingFormat(hostString)
+            return "https://".appendingFormat(hostString)
         }
 
         return hostString
