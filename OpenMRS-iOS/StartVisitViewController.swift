@@ -87,7 +87,7 @@ class StartVisitViewController : UITableViewController, SelectVisitTypeViewDeleg
             MBProgressExtension.hideActivityIndicator(in: self.view)
             if error == nil
             {
-                self.cachedVisitTypes = types as! [MRSVisitType]!
+                self.cachedVisitTypes = types as! [MRSVisitType]?
                 if types.count == 1
                 {
                     self.visitType = types[0] as! MRSVisitType
